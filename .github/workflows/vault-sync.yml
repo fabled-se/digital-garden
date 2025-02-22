@@ -1,0 +1,34 @@
+# .github/workflows/vault-sync.yml
+name: Sync Obsidian Vault
+
+on:
+  push:
+    paths:
+      - 'content/**'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+      - name: Process Vault Files
+        run: |
+          # Remove .obsidian configuration directory if present
+          rm -rf content/.obsidian
+          
+          # Optional: Remove other private files/folders
+          # rm -rf content/private
+          
+          # Add and commit changes
+          git add content/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync vault content" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,26 @@
+An ertia bundle with a set of practices for Kubernetes.
+
+- Invalid YAML
+- Pod restarting (Application error)
+- Pod restarting (Failing health check)
+- Pod restarting (Doesn't wait for application to start)
+- Invalid certificate request
+- Certificate request invalid issuer
+- Cert, wrong domain
+- Secret wrong namespace
+- Failing node
+- No node to schedule pod (taints)
+- No node to schedule pod (not enough xxx)
+- Invalid docker pull secrets
+- Invalid image specified
+- Invalid ENV variable
+- Env variable from secre that does not exist
+- Env variable from configmap, wrong key
+- Secret not base64 encoded
+- RBAC, invalid permissions
+- Helm value file does not template correctly
+- Helmfile, same thing?
+- Secret checked into repo
+- K9S practice (any of above?)
+- Bad logs
+- 
